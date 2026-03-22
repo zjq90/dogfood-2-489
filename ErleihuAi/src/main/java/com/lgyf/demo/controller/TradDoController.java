@@ -85,6 +85,10 @@ public class TradDoController extends PublicController {
                 erLeihuDataApi.setAgentArgs(agentArgs);
                 return erLeihuDataApi.get_client_reg(prame);
             }
+            // 账户注册（二类户开户）
+            else if(action_code.equals("03")){
+                return erLeihuDataApi.openAccount(prame);
+            }
 
            return TradeDoArgs.return_error(args,"100000","接口类型码错误");
 
