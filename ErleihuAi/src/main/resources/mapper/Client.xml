@@ -17,6 +17,21 @@
           values(#{client_no},#{name},#{phone},#{client_public_key},#{socket_ip},#{client_name},#{status},0,sysdate())
     </insert>
 
+    <select id="getOpenAccountByCertNo" parameterType="String" resultType="java.util.Map">
+        select * from open_account where cert_no = #{value} limit 1
+    </select>
+
+    <insert id="ist_open_account" parameterType="com.lgyf.demo.bean.OpenAccount">
+        insert into open_account(clilent_no, name, account_no, mobile, cert_no, otp_order_no, business_no, 
+            client_ip, home_address, lbs, device_id, ele_account_no, agreement_no, open_status, msg, open_order_no, add_time)
+        values(#{clilent_no}, #{name}, #{account_no}, #{mobile}, #{cert_no}, #{otp_order_no}, #{business_no},
+            #{client_ip}, #{home_address}, #{lbs}, #{device_id}, #{ele_account_no}, #{agreement_no}, #{open_status}, #{msg}, #{open_order_no}, sysdate())
+    </insert>
+
+    <insert id="ist_ele_account" parameterType="com.lgyf.demo.bean.EleAccount">
+        insert into ele_account(clilent_no, name, account_no, mobile, cert_no, ele_account_no, agreement_no, ele_account_status, add_date, add_time)
+        values(#{clilent_no}, #{name}, #{account_no}, #{mobile}, #{cert_no}, #{ele_account_no}, #{agreement_no}, #{ele_account_status}, curdate(), sysdate())
+    </insert>
+
 
 </mapper>
-
