@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Client">
+
+    <select id="clientList" resultType="com.lgyf.demo.bean.Client">
+        select * from client where is_agent=0
+    </select>
+
+    <select id="agentArgsList" resultType="com.lgyf.demo.bean.AgentArgs">
+        select client_no as agent_no,name,client_public_key as public_key,status,socket_ip from client where is_agent=1
+    </select>
+
+
+    <insert id="ist_client" parameterType="com.lgyf.demo.bean.Client">
+          insert into client(client_no,name,phone,client_public_key,socket_ip,client_name,status,is_agent,add_time)
+          values(#{client_no},#{name},#{phone},#{client_public_key},#{socket_ip},#{client_name},#{status},0,sysdate())
+    </insert>
+
+
+</mapper>
+
