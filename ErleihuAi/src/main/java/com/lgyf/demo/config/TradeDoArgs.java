@@ -45,21 +45,20 @@ public  class TradeDoArgs {
          action_code_02.put("cert_no","身份证号,1,0,18,^([1-6][1-9]|50)\\d{4}(18|19|20)\\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$|^([1-6][1-9]|50)\\d{4}\\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\\d{3}$");
          args.put("action_code_02",action_code_02);
 
-         //开通二类户
          Map<String,String> action_code_03=new HashMap<>();
-         action_code_01.put("name","姓名,1,0,20,^[a-zA-Z\\u4E00-\\u9FA5\\uf900-\\ufa2d·s]{2,20}$");   //X,Y,Z 分别代表 -》X是否必填（0非必填，1必填），Y数据类型（0 不限，1数字，2数字字母）
-         action_code_03.put("account_no","银行卡号,1,0,22,^[0-9]{10,22}$");
-         action_code_03.put("mobile","预留手机号,1,0,11,^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$");
+         action_code_03.put("name","姓名,1,0,20,^[a-zA-Z\\u4E00-\\u9FA5\\uf900-\\ufa2d·s]{2,20}$");
          action_code_03.put("cert_no","身份证号,1,0,18,^([1-6][1-9]|50)\\d{4}(18|19|20)\\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$|^([1-6][1-9]|50)\\d{4}\\d{2}((0[1-9])|10|11|12)(([0-2][1-9])|10|20|30|31)\\d{3}$");
-         action_code_03.put("client_ip","终端IP,1,0,50,^\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3}$");
-         action_code_03.put("device_id","设备编号,1,0,50");
+         action_code_03.put("cert_order_no","身份证申请号,1,0,50,^[a-zA-Z0-9]{10,50}$");
+         action_code_03.put("home_address","家庭住址,1,0,99,^[a-zA-Z0-9\\u4E00-\\u9FA5\\uf900-\\ufa2d·s]{5,99}$");
+         action_code_03.put("account_no","银行卡号,1,0,22,^[0-9]{10,22}$");
+         action_code_03.put("mobile","手机号,1,0,11,^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$");
          action_code_03.put("occupation","职业代码,1,0,5,^[0-9]{5}$");
-         action_code_03.put("home_address","详细地址,1,0,99,^[a-zA-Z0-9\\u4E00-\\u9FA5\\uf900-\\ufa2d·s]{5,99}$");
-         action_code_03.put("otp_code","短信验证码,1,0,50,^[0-9]{6}$");
-         action_code_03.put("cert_order_no","身份证单号,1,0,50,^[a-zA-Z0-9]{10,50}$");
          action_code_03.put("otp_order_no","短信订单号,1,0,50,^[a-zA-Z0-9]{10,50}$");
          action_code_03.put("business_no","短信业务号,1,0,50,^[a-zA-Z0-9\\_\\-]{10,50}$");
+         action_code_03.put("otp_code","短信验证码,1,0,6,^[0-9]{6}$");
+         action_code_03.put("client_ip","客户IP,1,0,50,^\\d{1,3}.\\d{1,3}.\\d{1,3}.\\d{1,3}$");
          action_code_03.put("lbs","经度纬度,1,0,50");
+         action_code_03.put("device_id","设备标识号,1,0,50");
          args.put("action_code_03",action_code_03);
          //余额查询签约
          Map<String,String> action_code_04=new HashMap<>();
