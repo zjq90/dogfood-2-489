@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OpenAccount">
+
+    <!-- 根据身份证号查询开户信息 -->
+    <select id="getByCertNo" parameterType="String" resultType="com.lgyf.demo.bean.OpenAccount">
+        select * from open_account where cert_no = #{cert_no} and open_status = '1'
+    </select>
+
+    <!-- 插入开户信息 -->
+    <insert id="insertOpenAccount" parameterType="com.lgyf.demo.bean.OpenAccount">
+          insert into open_account(
+              clilent_no, name, account_no, mobile, open_status, cert_no, msg, add_time, 
+              otp_order_no, business_no, ele_account_no, client_ip, home_address, lbs, 
+              device_id, agreement_no, open_order_no
+          )
+          values(
+              #{clilent_no}, #{name}, #{account_no}, #{mobile}, #{open_status}, #{cert_no}, #{msg}, sysdate(),
+              #{otp_order_no}, #{business_no}, #{ele_account_no}, #{client_ip}, #{home_address}, #{lbs},
+              #{device_id}, #{agreement_no}, #{open_order_no}
+          )
+    </insert>
+
+    <!-- 更新开户状态 -->
+    <update id="updateOpenStatus" parameterType="com.lgyf.demo.bean.OpenAccount">
+          update open_account 
+          set open_status = #{open_status}, 
+              ele_account_no = #{ele_account_no},
+              agreement_no = #{agreement_no},
+              msg = #{msg}
+          where cert_no = #{cert_no} and business_no = #{business_no}
+    </update>
+
+    <!-- 根据业务号查询开户记录 -->
+    <select id="getByBusinessNo" parameterType="String" resultType="com.lgyf.demo.bean.OpenAccount">
+        select * from open_account where business_no = #{business_no}
+    </select>
+
+</mapper>

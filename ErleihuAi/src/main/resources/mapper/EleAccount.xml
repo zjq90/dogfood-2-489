@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EleAccount">
+
+    <!-- 插入电子账户信息 -->
+    <insert id="insertEleAccount" parameterType="com.lgyf.demo.bean.EleAccount">
+          insert into ele_account(
+              clilent_no, name, account_no, mobile, cert_no, ele_account_no, 
+              agreement_no, add_date, add_time, ele_account_status
+          )
+          values(
+              #{clilent_no}, #{name}, #{account_no}, #{mobile}, #{cert_no}, #{ele_account_no},
+              #{agreement_no}, DATE_FORMAT(NOW(), '%Y-%m-%d'), DATE_FORMAT(NOW(), '%H:%i:%s'), '1'
+          )
+    </insert>
+
+    <!-- 根据身份证号查询电子账户信息 -->
+    <select id="getByCertNo" parameterType="String" resultType="com.lgyf.demo.bean.EleAccount">
+        select * from ele_account where cert_no = #{cert_no} and ele_account_status = '1'
+    </select>
+
+    <!-- 根据电子账号查询 -->
+    <select id="getByEleAccountNo" parameterType="String" resultType="com.lgyf.demo.bean.EleAccount">
+        select * from ele_account where ele_account_no = #{ele_account_no}
+    </select>
+
+</mapper>
